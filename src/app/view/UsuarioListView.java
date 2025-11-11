@@ -141,6 +141,8 @@ public class UsuarioListView extends JFrame {
 					}
 				}else {
 					dao.atualizarUsuario(usuario.getId(), nome, email);
+					refreshTable();
+					modeList();
 				}
 
 			}
