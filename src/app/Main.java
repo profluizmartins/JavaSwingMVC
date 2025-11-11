@@ -9,6 +9,7 @@ import app.view.UsuarioView;
 
 public class Main {
 
+	// um pequeno comentário
 	public static void main(String[] args) {
 		
 		//UsuarioDao dao = new UsuarioDao();
@@ -73,6 +74,9 @@ public class Main {
 		scanner.close();
 		*/
 		MainView mv = new MainView();
+		/* mais um comentário
+		 * 
+		 */
 		
 	}
 
