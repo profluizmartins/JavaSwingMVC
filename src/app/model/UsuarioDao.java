@@ -2,8 +2,6 @@ package app.model;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 import app.exception.UsuarioExeception;
 
@@ -26,7 +24,7 @@ public class UsuarioDao {
 	 */
 	// Inserir
 	public void adicionarUsuario(String nome, String email) throws UsuarioExeception {
-		if (nome == null || nome.equals("") || nome.length() <= 5) {
+		if (nome == null || nome.equals("") || nome.length() < 2) {
 			throw new UsuarioExeception("Nome inválido");
 		}
 		//Pattern pattern = Pattern.compile("\"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\\\.[a-zA-Z]{2,6}$\"");
@@ -38,13 +36,26 @@ public class UsuarioDao {
 		usuarios.add(new Usuario(proximoId++, nome, email));
 	}
 
+	/**
+	 * Médoto de retornar a lista de usuários
+	 * @return List<Usuários> a lista dos usuário cadastrados
+	 */
 	// Ler
 	public List<Usuario> listarUsuarios() {
 		return usuarios;
 	}
 
 	// Alterar
-	public boolean atualizarUsuario(int id, String novoNome, String novoEmail) {
+	public boolean atualizarUsuario(int id, String novoNome, String novoEmail) throws UsuarioExeception {
+		if(id <= 0) {
+			throw new UsuarioExeception("Id de usuário inválido");
+		}
+		if (novoNome == null || novoNome.equals("") || novoNome.length() < 2) {
+			throw new UsuarioExeception("Nome inválido");
+		}
+		if (novoEmail == null || novoEmail.equals("") || novoEmail.length() <= 5) {
+			throw new UsuarioExeception("Email inválido");
+		}
 		for (Usuario u : usuarios) {
 			if (u.getId() == id) {
 				u.setNome(novoNome);

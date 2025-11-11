@@ -32,7 +32,13 @@ public class UsuarioController {
 	}
 
 	public void atualizarUsuario(int id, String novoNome, String novoEmail) {
-		boolean sucesso = dao.atualizarUsuario(id, novoNome, novoEmail);
+		boolean sucesso = false;
+		try {
+			sucesso = dao.atualizarUsuario(id, novoNome, novoEmail);
+		} catch (UsuarioExeception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		if (sucesso) {
 			view.mostrarMensagem("Usuário atualizado com sucesso.");
 		} else {

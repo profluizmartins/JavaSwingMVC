@@ -140,9 +140,16 @@ public class UsuarioListView extends JFrame {
 						JOptionPane.showMessageDialog(null, "Erro ao criar usuário: "+e1.getMessage());
 					}
 				}else {
-					dao.atualizarUsuario(usuario.getId(), nome, email);
-					refreshTable();
-					modeList();
+					try {
+						dao.atualizarUsuario(usuario.getId(), nome, email);
+						refreshTable();
+						modeList();
+						JOptionPane.showMessageDialog(null, "Usuário alterado com sucesso!");
+						
+					} catch (UsuarioExeception e1) {
+						JOptionPane.showMessageDialog(null, "Erro ao alterar usuário: "+e1.getMessage());
+					}
+					
 				}
 
 			}
