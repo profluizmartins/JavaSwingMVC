@@ -1,9 +1,20 @@
 package app.model;
-
+/**
+ * Classe de domínio de Usuario
+ * @author Luiz Martins
+ * @version 1.0
+ * 
+ */
 public class Usuario {
 	private int id;
     private String nome;
     private String email;
+    /**
+     * Classe contrutora
+     * @param id Identificador do Usuário
+     * @param nome Nome do Usuário
+     * @param email Email do Usuário
+     */
 	public Usuario(int id, String nome, String email) {
 		super();
 		this.id = id;

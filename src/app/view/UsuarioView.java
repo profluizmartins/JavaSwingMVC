@@ -29,4 +29,8 @@ public class UsuarioView {
 	    public void mostrarMensagem(String mensagem) {
 	        System.out.println(mensagem);
 	    }
+	    
+	    public void mostrarMensagemErro(String mensagem) {
+	        System.out.println(mensagem);
+	    }
 }

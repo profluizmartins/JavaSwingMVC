@@ -2,6 +2,7 @@ package app.controller;
 
 import java.util.List;
 
+import app.exception.UsuarioExeception;
 import app.model.Usuario;
 import app.model.UsuarioDao;
 import app.view.UsuarioView;
@@ -16,8 +17,13 @@ public class UsuarioController {
 	}
 
 	public void criarUsuario(String nome, String email) {
-		dao.adicionarUsuario(nome, email);
-		view.mostrarMensagem("Usuário adicionado com sucesso.");
+		try {
+			dao.adicionarUsuario(nome, email);
+			view.mostrarMensagem("Usuário adicionado com sucesso.");
+		} catch (UsuarioExeception e) {
+			view.mostrarMensagem("Não foi possivel criar usuário: "+e.getMessage());
+		}
+		
 	}
 
 	public void listarUsuarios() {

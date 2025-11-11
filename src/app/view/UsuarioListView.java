@@ -17,6 +17,8 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
+import app.controller.UsuarioController;
+import app.exception.UsuarioExeception;
 import app.model.Usuario;
 import app.model.UsuarioDao;
 
@@ -44,11 +46,17 @@ public class UsuarioListView extends JFrame {
 	public UsuarioListView() {
 		
 		super("Teste do BorderLayout");
-
-		dao.adicionarUsuario("Juarez Silva", "juarezsilva@gmail.com");
-		dao.adicionarUsuario("Edson Arantes", "pelerei@gmail.com");
-		dao.adicionarUsuario("João Souza", "joaosouza@gmail.com");
-		dao.adicionarUsuario("Luiza", "luiza@gmail.com");
+		
+		try {
+			dao.adicionarUsuario("Juarez Silva", "juarezsilva@gmail.com");
+			dao.adicionarUsuario("Edson Arantes", "pelerei@gmail.com");
+			dao.adicionarUsuario("João Souza", "joaosouza@gmail.com");
+			dao.adicionarUsuario("Luiza M", "luiza@gmail.com");
+		} catch (UsuarioExeception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 		
 		getContentPane().setLayout(new BorderLayout());
 
@@ -122,12 +130,19 @@ public class UsuarioListView extends JFrame {
 				String nome = txfNome.getText();
 				String email = txfEmail.getText();
 				if(usuario == null) {
-					dao.adicionarUsuario(nome, email);
+					try {
+						dao.adicionarUsuario(nome, email);
+						refreshTable();
+						modeList();
+						JOptionPane.showMessageDialog(null, "Usuário criado com sucesso!");
+						
+					} catch (UsuarioExeception e1) {
+						JOptionPane.showMessageDialog(null, "Erro ao criar usuário: "+e1.getMessage());
+					}
 				}else {
 					dao.atualizarUsuario(usuario.getId(), nome, email);
 				}
-				refreshTable();
-				modeList();
+
 			}
 		});
 

@@ -2,42 +2,69 @@ package app.model;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
+import app.exception.UsuarioExeception;
+
+/**
+ * Classe de manipulação de DAO da Usuário
+ * 
+ * @author Luiz Martins
+ * @version 1.0
+ */
 public class UsuarioDao {
 	private List<Usuario> usuarios = new ArrayList<Usuario>();
-    private int proximoId = 1;
-    
-    // Inserir
-    public void adicionarUsuario(String nome, String email) {
-        usuarios.add(new Usuario(proximoId++, nome, email));
-    }
+	private int proximoId = 1;
 
-    // Ler
-    public List<Usuario> listarUsuarios() {
-        return usuarios;
-    }
+	/**
+	 * Método de adicionar um usuário banco de dados
+	 * 
+	 * @param nome  Nome do usuário
+	 * @param email email do usuário
+	 * @throws UsuarioExeception verificar de nome do usuário está correto
+	 */
+	// Inserir
+	public void adicionarUsuario(String nome, String email) throws UsuarioExeception {
+		if (nome == null || nome.equals("") || nome.length() <= 5) {
+			throw new UsuarioExeception("Nome inválido");
+		}
+		//Pattern pattern = Pattern.compile("\"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\\\.[a-zA-Z]{2,6}$\"");
+		//Matcher matcher = pattern.matcher(email);
+		if (email == null || email.equals("") || email.length() <= 5) {
+			throw new UsuarioExeception("Email inválido");
+		}
 
-    // Alterar
-    public boolean atualizarUsuario(int id, String novoNome, String novoEmail) {
-        for (Usuario u : usuarios) {
-            if (u.getId() == id) {
-                u.setNome(novoNome);
-                u.setEmail(novoEmail);
-                return true;
-            }
-        }
-        return false;
-    }
+		usuarios.add(new Usuario(proximoId++, nome, email));
+	}
 
-    // Excluir
-    public boolean removerUsuario(int id) {
-        return usuarios.removeIf(u -> u.getId() == id);
-    }
+	// Ler
+	public List<Usuario> listarUsuarios() {
+		return usuarios;
+	}
 
-    public Usuario buscarPorId(int id) {
-        for (Usuario u : usuarios) {
-            if (u.getId() == id) return u;
-        }
-        return null;
-    }
+	// Alterar
+	public boolean atualizarUsuario(int id, String novoNome, String novoEmail) {
+		for (Usuario u : usuarios) {
+			if (u.getId() == id) {
+				u.setNome(novoNome);
+				u.setEmail(novoEmail);
+				return true;
+			}
+		}
+		return false;
+	}
+
+	// Excluir
+	public boolean removerUsuario(int id) {
+		return usuarios.removeIf(u -> u.getId() == id);
+	}
+
+	public Usuario buscarPorId(int id) {
+		for (Usuario u : usuarios) {
+			if (u.getId() == id)
+				return u;
+		}
+		return null;
+	}
 }
