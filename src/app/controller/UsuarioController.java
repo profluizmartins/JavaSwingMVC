@@ -2,7 +2,7 @@ package app.controller;
 
 import java.util.List;
 
-import app.exception.UsuarioExeception;
+import app.exception.Execeptions;
 import app.model.Usuario;
 import app.model.UsuarioDao;
 import app.view.UsuarioView;
@@ -20,7 +20,7 @@ public class UsuarioController {
 		try {
 			dao.adicionarUsuario(nome, email);
 			view.mostrarMensagem("Usuário adicionado com sucesso.");
-		} catch (UsuarioExeception e) {
+		} catch (Execeptions e) {
 			view.mostrarMensagem("Não foi possivel criar usuário: "+e.getMessage());
 		}
 		
@@ -35,7 +35,7 @@ public class UsuarioController {
 		boolean sucesso = false;
 		try {
 			sucesso = dao.atualizarUsuario(id, novoNome, novoEmail);
-		} catch (UsuarioExeception e) {
+		} catch (Execeptions e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}

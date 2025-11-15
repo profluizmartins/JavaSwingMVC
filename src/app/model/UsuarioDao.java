@@ -3,7 +3,7 @@ package app.model;
 import java.util.ArrayList;
 import java.util.List;
 
-import app.exception.UsuarioExeception;
+import app.exception.Execeptions;
 
 /**
  * Classe de manipulação de DAO da Usuário
@@ -20,17 +20,17 @@ public class UsuarioDao {
 	 * 
 	 * @param nome  Nome do usuário
 	 * @param email email do usuário
-	 * @throws UsuarioExeception verificar de nome do usuário está correto
+	 * @throws Execeptions verificar de nome do usuário está correto
 	 */
 	// Inserir
-	public void adicionarUsuario(String nome, String email) throws UsuarioExeception {
+	public void adicionarUsuario(String nome, String email) throws Execeptions {
 		if (nome == null || nome.equals("") || nome.length() < 2) {
-			throw new UsuarioExeception("Nome inválido");
+			throw new Execeptions("Nome inválido");
 		}
 		//Pattern pattern = Pattern.compile("\"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\\\.[a-zA-Z]{2,6}$\"");
 		//Matcher matcher = pattern.matcher(email);
 		if (email == null || email.equals("") || email.length() <= 5) {
-			throw new UsuarioExeception("Email inválido");
+			throw new Execeptions("Email inválido");
 		}
 
 		usuarios.add(new Usuario(proximoId++, nome, email));
@@ -46,15 +46,15 @@ public class UsuarioDao {
 	}
 
 	// Alterar
-	public boolean atualizarUsuario(int id, String novoNome, String novoEmail) throws UsuarioExeception {
+	public boolean atualizarUsuario(int id, String novoNome, String novoEmail) throws Execeptions {
 		if(id <= 0) {
-			throw new UsuarioExeception("Id de usuário inválido");
+			throw new Execeptions("Id de usuário inválido");
 		}
 		if (novoNome == null || novoNome.equals("") || novoNome.length() < 2) {
-			throw new UsuarioExeception("Nome inválido");
+			throw new Execeptions("Nome inválido");
 		}
 		if (novoEmail == null || novoEmail.equals("") || novoEmail.length() <= 5) {
-			throw new UsuarioExeception("Email inválido");
+			throw new Execeptions("Email inválido");
 		}
 		for (Usuario u : usuarios) {
 			if (u.getId() == id) {

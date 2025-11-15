@@ -1,7 +1,6 @@
 package app.view;
 
 import java.awt.BorderLayout;
-import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.util.List;
@@ -17,8 +16,7 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
-import app.controller.UsuarioController;
-import app.exception.UsuarioExeception;
+import app.exception.Execeptions;
 import app.model.Usuario;
 import app.model.UsuarioDao;
 
@@ -52,7 +50,7 @@ public class UsuarioListView extends JFrame {
 			dao.adicionarUsuario("Edson Arantes", "pelerei@gmail.com");
 			dao.adicionarUsuario("João Souza", "joaosouza@gmail.com");
 			dao.adicionarUsuario("Luiza M", "luiza@gmail.com");
-		} catch (UsuarioExeception e) {
+		} catch (Execeptions e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
@@ -136,7 +134,7 @@ public class UsuarioListView extends JFrame {
 						modeList();
 						JOptionPane.showMessageDialog(null, "Usuário criado com sucesso!");
 						
-					} catch (UsuarioExeception e1) {
+					} catch (Execeptions e1) {
 						JOptionPane.showMessageDialog(null, "Erro ao criar usuário: "+e1.getMessage());
 					}
 				}else {
@@ -146,7 +144,7 @@ public class UsuarioListView extends JFrame {
 						modeList();
 						JOptionPane.showMessageDialog(null, "Usuário alterado com sucesso!");
 						
-					} catch (UsuarioExeception e1) {
+					} catch (Execeptions e1) {
 						JOptionPane.showMessageDialog(null, "Erro ao alterar usuário: "+e1.getMessage());
 					}
 					
