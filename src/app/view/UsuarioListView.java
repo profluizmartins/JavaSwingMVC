@@ -22,6 +22,12 @@ import app.exception.UsuarioExeception;
 import app.model.Usuario;
 import app.model.UsuarioDao;
 
+/**
+ * Classe da janela de lista de usuários
+ *
+ * @author Romulo Henrique
+ * @version 1.0
+ */
 public class UsuarioListView extends JFrame {
 
 	private UsuarioDao dao = new UsuarioDao();
@@ -43,6 +49,12 @@ public class UsuarioListView extends JFrame {
 	private JTable tabela;
 
 	private Usuario usuario;
+
+    /**
+     * Método contrutor Do UsuarioListView
+     *
+     *
+     */
 	public UsuarioListView() {
 		
 		super("Teste do BorderLayout");
@@ -190,6 +202,11 @@ public class UsuarioListView extends JFrame {
 		setVisible(true);
 	}
 
+    /**
+     * Método para setar botoes da tabela
+     *
+     *
+     */
 	private void modeList() {
 		btnCancelar.setVisible(false);
 		btnSalvar.setVisible(false);
@@ -201,6 +218,11 @@ public class UsuarioListView extends JFrame {
 		lTitulo.setText("Lista de Usuários Cadastrados");
 	}
 
+    /**
+     * Método para setar botoes do formulário
+     *
+     *
+     */
 	private void modeForm() {
 		btnCancelar.setVisible(true);
 		btnSalvar.setVisible(true);
@@ -212,6 +234,11 @@ public class UsuarioListView extends JFrame {
 		lTitulo.setText("Formulário de Cadastrado de Usuários");
 	}
 
+    /**
+     * Método para atualizar os usuários existentes na tabela
+     *
+     *
+     */
 	private void refreshTable() {
 		List<Usuario> usuarios = dao.listarUsuarios();
 		while (modelo.getRowCount() > 0) {

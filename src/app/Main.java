@@ -1,15 +1,21 @@
 package app;
 
-import java.util.Scanner;
-
-import app.controller.UsuarioController;
-import app.model.UsuarioDao;
 import app.view.MainView;
-import app.view.UsuarioView;
 
+/**
+ * Classe principal do programa
+ *
+ * @author Romulo Henrique
+ * @version 1.0
+ */
 public class Main {
 
 	// um pequeno comentário
+    /**
+     * Método de execução do programa
+     *
+     *
+     */
 	public static void main(String[] args) {
 		
 		//UsuarioDao dao = new UsuarioDao();

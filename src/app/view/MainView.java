@@ -3,17 +3,27 @@ package app.view;
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
-
 import javax.swing.AbstractAction;
 import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 
+/**
+ * Classe da janela principal do programa
+ *
+ * @author Romulo Henrique
+ * @version 1.0
+ */
 public class MainView  extends JFrame{
 	private JMenuBar menuBar;
 	private JMenu menuCadastros;
 	private JMenuItem menuUsuario;
+
+    /**
+     * Método contrutor do MainView
+     *
+     */
 	public MainView(){
 		super("Sistema de Cadastros");
 		getContentPane().setLayout(new FlowLayout());

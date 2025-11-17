@@ -8,7 +8,7 @@ import app.exception.UsuarioExeception;
 /**
  * Classe de manipulação de DAO da Usuário
  * 
- * @author Luiz Martins
+ * @author Romulo Henrique
  * @version 1.0
  */
 public class UsuarioDao {
@@ -22,7 +22,6 @@ public class UsuarioDao {
 	 * @param email email do usuário
 	 * @throws UsuarioExeception verificar de nome do usuário está correto
 	 */
-	// Inserir
 	public void adicionarUsuario(String nome, String email) throws UsuarioExeception {
 		if (nome == null || nome.equals("") || nome.length() < 2) {
 			throw new UsuarioExeception("Nome inválido");
@@ -37,7 +36,7 @@ public class UsuarioDao {
 	}
 
 	/**
-	 * Médoto de retornar a lista de usuários
+	 * Método de retornar a lista de usuários
 	 * @return List<Usuários> a lista dos usuário cadastrados
 	 */
 	// Ler
@@ -45,6 +44,16 @@ public class UsuarioDao {
 		return usuarios;
 	}
 
+    /**
+     * Método de atualizar o cadastro do usuário
+     * @param novoNome Novo nome do Usuário
+     * @param id Identificador do Usuário
+     * @param novoEmail Novo email do usuário
+     *
+     * @throws UsuarioExeception verificar se o id, nome e email são válidos
+     *
+     * @return true se o id do usuário for existente, e false se o id do usuário for inexistente
+     */
 	// Alterar
 	public boolean atualizarUsuario(int id, String novoNome, String novoEmail) throws UsuarioExeception {
 		if(id <= 0) {
@@ -66,11 +75,24 @@ public class UsuarioDao {
 		return false;
 	}
 
+    /**
+     * Método de remover um usuário
+     * @param id Identificador do Usuário
+     *
+     *
+     * @return ação de remover o usuário, se o id for válido
+     */
 	// Excluir
 	public boolean removerUsuario(int id) {
 		return usuarios.removeIf(u -> u.getId() == id);
 	}
 
+    /**
+     * Método de buscar um usuário pelo id
+     * @param id Identificador do Usuário
+
+     * @return o usuário do id buscado, se não existir, retorna valor nulo
+     */
 	public Usuario buscarPorId(int id) {
 		for (Usuario u : usuarios) {
 			if (u.getId() == id)
