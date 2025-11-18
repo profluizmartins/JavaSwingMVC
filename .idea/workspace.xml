@@ -4,15 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5668fc00-83b3-4fd1-93f5-39ef9cc9e6c1" name="Alterações" comment="Criação das classes ProdutoView e ProdutoListView">
-      <change beforePath="$PROJECT_DIR$/classes/production/JavaSwingMVC/app/exception/UsuarioExeception.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/classes/production/JavaSwingMVC/app/view/MainView$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/classes/production/JavaSwingMVC/app/view/MainView$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/classes/production/JavaSwingMVC/app/view/UsuarioListView$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/classes/production/JavaSwingMVC/app/view/UsuarioListView$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/classes/production/JavaSwingMVC/app/view/UsuarioListView$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/classes/production/JavaSwingMVC/app/view/UsuarioListView$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/classes/production/JavaSwingMVC/app/view/UsuarioListView$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/classes/production/JavaSwingMVC/app/view/UsuarioListView$3.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/classes/production/JavaSwingMVC/app/view/UsuarioListView$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/classes/production/JavaSwingMVC/app/view/UsuarioListView$4.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/classes/production/JavaSwingMVC/app/view/UsuarioListView$5.class" beforeDir="false" afterPath="$PROJECT_DIR$/classes/production/JavaSwingMVC/app/view/UsuarioListView$5.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/classes/production/JavaSwingMVC/app/view/UsuarioListView.class" beforeDir="false" afterPath="$PROJECT_DIR$/classes/production/JavaSwingMVC/app/view/UsuarioListView.class" afterDir="false" />
+    <list default="true" id="5668fc00-83b3-4fd1-93f5-39ef9cc9e6c1" name="Alterações" comment="Atualização">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/JavaSwingMVC/app/view/ProdutoListView$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/classes/production/JavaSwingMVC/app/view/ProdutoListView$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/JavaSwingMVC/app/view/ProdutoListView$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/classes/production/JavaSwingMVC/app/view/ProdutoListView$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/JavaSwingMVC/app/view/ProdutoListView$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/classes/production/JavaSwingMVC/app/view/ProdutoListView$3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/JavaSwingMVC/app/view/ProdutoListView$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/classes/production/JavaSwingMVC/app/view/ProdutoListView$4.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/JavaSwingMVC/app/view/ProdutoListView$5.class" beforeDir="false" afterPath="$PROJECT_DIR$/classes/production/JavaSwingMVC/app/view/ProdutoListView$5.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/JavaSwingMVC/app/view/ProdutoListView.class" beforeDir="false" afterPath="$PROJECT_DIR$/classes/production/JavaSwingMVC/app/view/ProdutoListView.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/view/ProdutoListView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/view/ProdutoListView.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -104,7 +104,15 @@
       <option name="project" value="LOCAL" />
       <updated>1763426571469</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Atualização">
+      <option name="closed" value="true" />
+      <created>1763426688726</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1763426688726</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -121,6 +129,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Criação das classes Produto e ProdutoDao" />
     <MESSAGE value="Criação das classes ProdutoView e ProdutoListView" />
-    <option name="LAST_COMMIT_MESSAGE" value="Criação das classes ProdutoView e ProdutoListView" />
+    <MESSAGE value="Atualização" />
+    <option name="LAST_COMMIT_MESSAGE" value="Atualização" />
   </component>
 </project>

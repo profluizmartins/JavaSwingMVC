@@ -3,7 +3,10 @@ package app.view;
 import java.awt.BorderLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
+import java.text.NumberFormat;
+import java.text.ParseException;
 import java.util.List;
+import java.util.Locale;
 
 import javax.swing.AbstractAction;
 import javax.swing.JButton;
@@ -131,7 +134,15 @@ public class ProdutoListView extends JFrame {
             public void actionPerformed(ActionEvent e) {
 
                 String nome = txfNome.getText();
-                Double preco = Double.parseDouble(txfPreco.getText());;
+                NumberFormat formatador = NumberFormat.getInstance(new Locale("pt", "BR"));
+                Number numero = null;
+                try {
+                    numero = formatador.parse(txfPreco.getText());
+                    Double preco = numero.doubleValue();
+                } catch (ParseException ex) {
+                    JOptionPane.showMessageDialog(null, "Digite números apenas!");
+                }
+                Double preco = numero.doubleValue();
                 if(produto == null) {
                     try {
                         dao.adicionarProdutos(nome, preco);
