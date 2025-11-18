@@ -4,16 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5668fc00-83b3-4fd1-93f5-39ef9cc9e6c1" name="Alterações" comment="Atualização">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/classes/production/JavaSwingMVC/app/view/ProdutoListView$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/classes/production/JavaSwingMVC/app/view/ProdutoListView$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/classes/production/JavaSwingMVC/app/view/ProdutoListView$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/classes/production/JavaSwingMVC/app/view/ProdutoListView$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/classes/production/JavaSwingMVC/app/view/ProdutoListView$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/classes/production/JavaSwingMVC/app/view/ProdutoListView$3.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/classes/production/JavaSwingMVC/app/view/ProdutoListView$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/classes/production/JavaSwingMVC/app/view/ProdutoListView$4.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/classes/production/JavaSwingMVC/app/view/ProdutoListView$5.class" beforeDir="false" afterPath="$PROJECT_DIR$/classes/production/JavaSwingMVC/app/view/ProdutoListView$5.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/classes/production/JavaSwingMVC/app/view/ProdutoListView.class" beforeDir="false" afterPath="$PROJECT_DIR$/classes/production/JavaSwingMVC/app/view/ProdutoListView.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/view/ProdutoListView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/view/ProdutoListView.java" afterDir="false" />
-    </list>
+    <list default="true" id="5668fc00-83b3-4fd1-93f5-39ef9cc9e6c1" name="Alterações" comment="Atualização de modo de entrado dos valores de preço em ProdutoListView" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -112,7 +103,15 @@
       <option name="project" value="LOCAL" />
       <updated>1763426688726</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Atualização de modo de entrado dos valores de preço em ProdutoListView">
+      <option name="closed" value="true" />
+      <created>1763427361619</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1763427361619</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -130,6 +129,7 @@
     <MESSAGE value="Criação das classes Produto e ProdutoDao" />
     <MESSAGE value="Criação das classes ProdutoView e ProdutoListView" />
     <MESSAGE value="Atualização" />
-    <option name="LAST_COMMIT_MESSAGE" value="Atualização" />
+    <MESSAGE value="Atualização de modo de entrado dos valores de preço em ProdutoListView" />
+    <option name="LAST_COMMIT_MESSAGE" value="Atualização de modo de entrado dos valores de preço em ProdutoListView" />
   </component>
 </project>
