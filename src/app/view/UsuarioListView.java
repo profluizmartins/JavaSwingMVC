@@ -182,7 +182,7 @@ public class UsuarioListView extends JFrame {
 		painelCentral.add(jpFormulario);
 
 		this.modeList();
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setSize(800, 600);
 		setLocationRelativeTo(null);
 		setVisible(true);

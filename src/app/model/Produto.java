@@ -1,27 +1,27 @@
 package app.model;
-/*
+/**
 * Classe para criação de produtos
 * @author Arthur Souza
 * @version 1.0
- */
+ **/
 public class Produto {
     private int id;
     private String nome;
-    private float preco;
-/*
+    private Double preco;
+/**
 * Classe Contrutora
 * @param id Identificador do produto
 * @param nome Nome do produto
 * @param preco Preço do produto
- */
-    public Produto(int id, String nome, float preco){
+ **/
+    public Produto(int id, String nome, Double preco){
         this.id = id;
         this.nome = nome;
         this.preco = preco;
     }
-/*
+/**
 * Getters e Setters para cada atributo da classe Produto
- */
+ **/
     public int getId() {
         return id;
     }
@@ -38,11 +38,11 @@ public class Produto {
         this.nome = nome;
     }
 
-    public float getPreco() {
+    public Double getPreco() {
         return preco;
     }
 
-    public void setPreco(float preco) {
+    public void setPreco(Double preco) {
         this.preco = preco;
     }
 }

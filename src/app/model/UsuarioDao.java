@@ -38,13 +38,21 @@ public class UsuarioDao {
 
 	/**
 	 * Médoto de retornar a lista de usuários
-	 * @return List<Usuários> a lista dos usuário cadastrados
+	 * Retorna a lista dos usuário cadastrados
 	 */
 	// Ler
 	public List<Usuario> listarUsuarios() {
 		return usuarios;
 	}
 
+
+    /**
+     * Método para alterar usuários do bando de dados
+     * @param id Identificador do usuário a ser alterado
+     * @param novoNome Novo nome que será atribuído ao usuário
+     * @param novoEmail Novo e-mail que será aribuído ao usuário
+     * @throws Execeptions
+     */
 	// Alterar
 	public boolean atualizarUsuario(int id, String novoNome, String novoEmail) throws Execeptions {
 		if(id <= 0) {
@@ -66,11 +74,20 @@ public class UsuarioDao {
 		return false;
 	}
 
+    /**
+     * Método para exluir usuários do banco de dados
+     * @param id Identificador do usuário a ser excluído
+     */
 	// Excluir
 	public boolean removerUsuario(int id) {
 		return usuarios.removeIf(u -> u.getId() == id);
 	}
 
+    /**
+     * Método para buscar usuário no banco de dados
+     * @param id Identificador do usuário a ser buscado
+     */
+    //Buscar usuário
 	public Usuario buscarPorId(int id) {
 		for (Usuario u : usuarios) {
 			if (u.getId() == id)

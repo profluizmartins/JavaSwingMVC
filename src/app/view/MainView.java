@@ -14,6 +14,7 @@ public class MainView  extends JFrame{
 	private JMenuBar menuBar;
 	private JMenu menuCadastros;
 	private JMenuItem menuUsuario;
+    private JMenuItem menuProduto;
 	public MainView(){
 		super("Sistema de Cadastros");
 		getContentPane().setLayout(new FlowLayout());
@@ -30,7 +31,16 @@ public class MainView  extends JFrame{
 				
 			}
 		});
+        menuProduto = new JMenuItem(new AbstractAction("Produtos") {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                ProdutoListView plv = new ProdutoListView();
+
+            }
+        });
 		menuCadastros.add(menuUsuario);
+        menuCadastros.add(menuProduto);
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(800, 600);

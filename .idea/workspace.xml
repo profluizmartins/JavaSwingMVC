@@ -4,13 +4,43 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5668fc00-83b3-4fd1-93f5-39ef9cc9e6c1" name="Alterações" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/model/Produto.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/model/ProdutoDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/controller/UsuarioController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/controller/UsuarioController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/exception/UsuarioExeception.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/exception/Execeptions.java" afterDir="false" />
+    <list default="true" id="5668fc00-83b3-4fd1-93f5-39ef9cc9e6c1" name="Alterações" comment="Criação das classes Produto e ProdutoDao">
+      <change afterPath="$PROJECT_DIR$/src/app/view/ProdutoListView.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/view/ProdutoView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/JavaSwingMVC/app/controller/UsuarioController.class" beforeDir="false" afterPath="$PROJECT_DIR$/classes/production/JavaSwingMVC/app/controller/UsuarioController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/JavaSwingMVC/app/model/UsuarioDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/classes/production/JavaSwingMVC/app/model/UsuarioDao.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/JavaSwingMVC/app/view/MainView.class" beforeDir="false" afterPath="$PROJECT_DIR$/classes/production/JavaSwingMVC/app/view/MainView.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/allclasses-index.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/allclasses-index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/allpackages-index.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/allpackages-index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/app/model/Usuario.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/app/model/Usuario.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/app/model/class-use/Usuario.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/app/model/class-use/Usuario.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/app/model/package-summary.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/app/model/package-summary.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/app/model/package-tree.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/app/model/package-tree.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/app/model/package-use.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/app/model/package-use.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/element-list" beforeDir="false" afterPath="$PROJECT_DIR$/doc/element-list" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/help-doc.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/help-doc.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/index-files/index-1.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/index-files/index-1.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/index-files/index-2.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/index-files/index-2.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/index-files/index-3.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/index-files/index-3.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/index-files/index-4.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/index-files/index-4.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/legal/ADDITIONAL_LICENSE_INFO" beforeDir="false" afterPath="$PROJECT_DIR$/doc/legal/ADDITIONAL_LICENSE_INFO" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/legal/ASSEMBLY_EXCEPTION" beforeDir="false" afterPath="$PROJECT_DIR$/doc/legal/ASSEMBLY_EXCEPTION" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/legal/LICENSE" beforeDir="false" afterPath="$PROJECT_DIR$/doc/legal/LICENSE" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/legal/jquery.md" beforeDir="false" afterPath="$PROJECT_DIR$/doc/legal/jquery.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/legal/jqueryUI.md" beforeDir="false" afterPath="$PROJECT_DIR$/doc/legal/jqueryUI.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/member-search-index.js" beforeDir="false" afterPath="$PROJECT_DIR$/doc/member-search-index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/overview-tree.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/overview-tree.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/package-search-index.js" beforeDir="false" afterPath="$PROJECT_DIR$/doc/package-search-index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/search.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/search.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/tag-search-index.js" beforeDir="false" afterPath="$PROJECT_DIR$/doc/tag-search-index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/type-search-index.js" beforeDir="false" afterPath="$PROJECT_DIR$/doc/type-search-index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/model/Produto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/model/Produto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/model/ProdutoDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/model/ProdutoDao.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/model/UsuarioDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/model/UsuarioDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/view/MainView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/view/MainView.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/view/UsuarioListView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/view/UsuarioListView.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -53,21 +83,21 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Aplicação.Main.executor": "Run",
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "Arthur-Souza-Santos",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/Arthur/Documents/OutrosProjetos/JavaSwingMVC",
-    "onboarding.tips.debug.path": "C:/Users/Arthur/Documents/MeusProjetos/JavaSwingMVC/src/Main.java",
-    "project.structure.last.edited": "Módulos",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.2"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Aplicação.Main.executor&quot;: &quot;Run&quot;,
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;Arthur-Souza-Santos&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Arthur/Documents/OutrosProjetos/JavaSwingMVC&quot;,
+    &quot;onboarding.tips.debug.path&quot;: &quot;C:/Users/Arthur/Documents/MeusProjetos/JavaSwingMVC/src/Main.java&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Módulos&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager">
     <configuration default="true" type="JetRunConfigurationType">
       <method v="2">
@@ -87,6 +117,15 @@
       <option name="presentableId" value="Default" />
       <updated>1763170289030</updated>
     </task>
+    <task id="LOCAL-00001" summary="Criação das classes Produto e ProdutoDao">
+      <option name="closed" value="true" />
+      <created>1763242244986</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1763242244986</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -99,5 +138,9 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Criação das classes Produto e ProdutoDao" />
+    <option name="LAST_COMMIT_MESSAGE" value="Criação das classes Produto e ProdutoDao" />
   </component>
 </project>
