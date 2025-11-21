@@ -2,19 +2,28 @@ package app;
 
 import java.util.Scanner;
 
+
+
 import app.controller.UsuarioController;
 import app.model.UsuarioDao;
 import app.view.MainView;
 import app.view.UsuarioView;
 
-public class Main {
 
-	// um pequeno comentário
+
+public class Main {
+	
+	/*
+	 * @author Samuel
+	 * @version 3.0
+	 * Classe Main
+	 */
+
 	public static void main(String[] args) {
+		/*
+		UsuarioDao dao = new UsuarioDao();
 		
-		//UsuarioDao dao = new UsuarioDao();
-		
-		/*UsuarioView view = new UsuarioView();
+		UsuarioView view = new UsuarioView();
 		UsuarioController controller = new UsuarioController(dao, view);
 
 		Scanner scanner = new Scanner(System.in);
@@ -73,7 +82,9 @@ public class Main {
 
 		scanner.close();
 		*/
-		MainView mv = new MainView();
+		
+	
+	MainView mv = new MainView();
 		/* mais um comentário
 		 * 
 		 */

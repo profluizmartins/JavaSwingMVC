@@ -8,7 +8,7 @@ import app.exception.UsuarioExeception;
 /**
  * Classe de manipulação de DAO da Usuário
  * 
- * @author Luiz Martins
+ * @author Samuel Barbosa
  * @version 1.0
  */
 public class UsuarioDao {

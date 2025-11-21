@@ -1,7 +1,7 @@
 package app.model;
 /**
  * Classe de domínio de Usuario
- * @author Luiz Martins
+ * @author Samuel Barbosa
  * @version 1.0
  * 
  */
@@ -24,6 +24,11 @@ public class Usuario {
 	public int getId() {
 		return id;
 	}
+	
+	/*
+	 * Método de pegar o ID
+	 * @version 2.0
+	 */
 	public void setId(int id) {
 		this.id = id;
 	}
