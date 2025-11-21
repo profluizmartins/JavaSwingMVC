@@ -1,2 +1,2 @@
-Mando este projeto de Login de pessoas pois foi o que fiz no lugar no CRUD de produtos,
+Esse é o projeto de Login de pessoas com Tratamento de Exceções e Documentação, usei esse pois foi o que fiz no lugar do CRUD de produtos,
 como expliquei ao professor em uma aula anterior, espero que isso não tenha problemas
