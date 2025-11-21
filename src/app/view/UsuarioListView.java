@@ -21,7 +21,11 @@ import app.controller.UsuarioController;
 import app.exception.UsuarioExeception;
 import app.model.Usuario;
 import app.model.UsuarioDao;
-
+/**
+ * Classe responsável por mostrar visualmente a lista dos usuarios usando Java Swing.
+ * @author João Pedro
+ * @version 1.0
+ */
 public class UsuarioListView extends JFrame {
 
 	private UsuarioDao dao = new UsuarioDao();
@@ -43,10 +47,15 @@ public class UsuarioListView extends JFrame {
 	private JTable tabela;
 
 	private Usuario usuario;
+	/**
+	 * Metodo construtor.
+	 */
 	public UsuarioListView() {
 		
 		super("Teste do BorderLayout");
-		
+		/**
+		 * Tratamento de exceções.
+		 */
 		try {
 			dao.adicionarUsuario("Juarez Silva", "juarezsilva@gmail.com");
 			dao.adicionarUsuario("Edson Arantes", "pelerei@gmail.com");
@@ -78,6 +87,10 @@ public class UsuarioListView extends JFrame {
 
 		btnNovo = new JButton(new AbstractAction("Novo") {
 			@Override
+			/**
+			 * 
+			 * @param e
+			 */
 			public void actionPerformed(ActionEvent e) {
 				modeForm();
 				usuario = null;

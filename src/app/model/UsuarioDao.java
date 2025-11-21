@@ -8,7 +8,7 @@ import app.exception.UsuarioExeception;
 /**
  * Classe de manipulação de DAO da Usuário
  * 
- * @author Luiz Martins
+ * @author João Pedro
  * @version 1.0
  */
 public class UsuarioDao {
@@ -20,7 +20,7 @@ public class UsuarioDao {
 	 * 
 	 * @param nome  Nome do usuário
 	 * @param email email do usuário
-	 * @throws UsuarioExeception verificar de nome do usuário está correto
+	 * @throws UsuarioExeception verificar se nome do usuário está correto
 	 */
 	// Inserir
 	public void adicionarUsuario(String nome, String email) throws UsuarioExeception {
@@ -44,7 +44,14 @@ public class UsuarioDao {
 	public List<Usuario> listarUsuarios() {
 		return usuarios;
 	}
-
+/**
+ * Metodo boolean responsável por atualizar os dados do usuário.
+ * @param id Id do usuário
+ * @param novoNome Novo nome do usuário
+ * @param novoEmail Novo email do usuário
+ * @return retorna true ou retorna false
+ * @throws UsuarioExeception retorna se o id, nome ou email está invalido
+ */
 	// Alterar
 	public boolean atualizarUsuario(int id, String novoNome, String novoEmail) throws UsuarioExeception {
 		if(id <= 0) {
@@ -65,12 +72,20 @@ public class UsuarioDao {
 		}
 		return false;
 	}
-
+/**
+ * Metodo responsavel por remover usuário.
+ * @param id Id do usuário
+ * @return Retorna os usuarios removidos
+ */
 	// Excluir
 	public boolean removerUsuario(int id) {
 		return usuarios.removeIf(u -> u.getId() == id);
 	}
-
+/**
+ * Metodo responsável por buscar o id do usuário.
+ * @param id Id do usuário
+ * @return retorna "u"
+ */
 	public Usuario buscarPorId(int id) {
 		for (Usuario u : usuarios) {
 			if (u.getId() == id)

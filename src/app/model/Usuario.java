@@ -1,7 +1,7 @@
 package app.model;
 /**
  * Classe de domínio de Usuario
- * @author Luiz Martins
+ * @author João Pedro
  * @version 1.0
  * 
  */

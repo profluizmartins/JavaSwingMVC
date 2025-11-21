@@ -9,11 +9,18 @@ import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
-
+/**
+ * Classe MainView para gerenciamento do menu de usuarios usando java swing.
+ * @author João Pedro
+ * @version 1.0
+ */
 public class MainView  extends JFrame{
 	private JMenuBar menuBar;
 	private JMenu menuCadastros;
 	private JMenuItem menuUsuario;
+	/*
+	 * Método do construtor.
+	 */
 	public MainView(){
 		super("Sistema de Cadastros");
 		getContentPane().setLayout(new FlowLayout());
