@@ -1,0 +1,1 @@
+packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html","k":"18"},{"l":"pckg"},{"l":"pckg.controller"},{"l":"pckg.model"},{"l":"pckg.view"}];updateSearchResults();

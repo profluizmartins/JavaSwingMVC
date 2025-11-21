@@ -1,0 +1,2 @@
+Mando este projeto de Login de pessoas pois foi o que fiz no lugar no CRUD de produtos,
+como expliquei ao professor em uma aula anterior, espero que isso não tenha problemas
