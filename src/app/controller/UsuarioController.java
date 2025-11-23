@@ -11,6 +11,8 @@ import app.view.UsuarioView;
 
 /**
  * A classe controller faz a comunicação entre a classe dao e view.
+ * @author Samuel Barbosa
+ * @version 2.0
  */
 
 public class UsuarioController {
@@ -20,7 +22,7 @@ public class UsuarioController {
 	/**
 	 * Classe Construtora de Usuario View
 	 * @author Samuel Barbosa
-	 * @version 1.0
+	 * @version 1.3
 	 * @param dao chama a classe dao para receber os dados
 	 * @param view chama a classe view para exibir os dados
 	 */
@@ -98,7 +100,15 @@ public class UsuarioController {
 	 */
 
 	public void buscarUsuario(int id) {
-		Usuario u = dao.buscarPorId(id);
-		view.mostrarUsuario(u);
+
+        try {
+            Usuario u = dao.buscarPorId(id);
+
+            view.mostrarUsuario(u);
+
+        }
+        catch(Exception e){
+            view.mostrarMensagem("Erro ao buscar usuário: " + e.getMessage());
+        }
 	}
 }

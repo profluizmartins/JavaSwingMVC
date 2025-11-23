@@ -10,11 +10,21 @@ import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 
+/**
+ * View principal do app
+ * @author Samuel
+ * @version 1.6
+ */
+
 public class MainView  extends JFrame{
 	private JMenuBar menuBar;
 	private JMenu menuCadastros;
 	private JMenuItem menuUsuario;
-	public MainView(){
+
+    /**
+     * Construtuor do MainView e configura as definições do view
+     */
+    public MainView(){
 		super("Sistema de Cadastros");
 		getContentPane().setLayout(new FlowLayout());
 		

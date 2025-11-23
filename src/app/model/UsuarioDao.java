@@ -20,7 +20,7 @@ public class UsuarioDao {
 	 * 
 	 * @param nome  Nome do usuário
 	 * @param email email do usuário
-	 * @throws UsuarioExeception verificar de nome do usuário está correto
+	 * @throws UsuarioExeception verificar se os dados do usuário estão corretos
 	 */
 	// Inserir
 	public void adicionarUsuario(String nome, String email) throws UsuarioExeception {
@@ -45,7 +45,14 @@ public class UsuarioDao {
 		return usuarios;
 	}
 
-	// Alterar
+    /**
+     * Atualiza os dados do usuário
+     * @param id O id do usuario a ser alterado
+     * @param novoNome o novo nome do usuario
+     * @param novoEmail o novo email do usuario
+     * @return retorna true se os dados forem alterados, caso contrario false
+     * @throws UsuarioExeception exceções lançadas caso os dados sejam preechidas de forma errada
+     */
 	public boolean atualizarUsuario(int id, String novoNome, String novoEmail) throws UsuarioExeception {
 		if(id <= 0) {
 			throw new UsuarioExeception("Id de usuário inválido");
@@ -66,11 +73,20 @@ public class UsuarioDao {
 		return false;
 	}
 
-	// Excluir
+    /**
+     * remove o usuario pelo ID
+     * @param id o ID do usuario a ser deletado
+     * @return retorna true se o usuario for deletado, caso contrario false
+     */
 	public boolean removerUsuario(int id) {
 		return usuarios.removeIf(u -> u.getId() == id);
 	}
 
+    /**
+     * Busca o usuario pelo ID
+     * @param id o Id do usuario a ser encontrado
+     * @return true se encontrado false se não for encontrado
+     */
 	public Usuario buscarPorId(int id) {
 		for (Usuario u : usuarios) {
 			if (u.getId() == id)

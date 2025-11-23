@@ -22,6 +22,11 @@ import app.exception.UsuarioExeception;
 import app.model.Usuario;
 import app.model.UsuarioDao;
 
+/**
+ * Classe de interface gráfica que exibe os campos para listar, criar, editar e excluir usuarios
+ * @author samuel barbosa
+ */
+
 public class UsuarioListView extends JFrame {
 
 	private UsuarioDao dao = new UsuarioDao();
@@ -92,13 +97,17 @@ public class UsuarioListView extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				int linhaSelecionada = tabela.getSelectedRow();
 				if (linhaSelecionada != -1) {
-					int id = (int) modelo.getValueAt(linhaSelecionada, 0);
-					String nome = (String) modelo.getValueAt(linhaSelecionada, 1);
-					String email = (String) modelo.getValueAt(linhaSelecionada, 2);
-					usuario = new Usuario(id, nome, email);
-					txfNome.setText(nome);
-					txfEmail.setText(email);
-					modeForm();
+                    try {
+                        int id = (int) modelo.getValueAt(linhaSelecionada, 0);
+                        String nome = (String) modelo.getValueAt(linhaSelecionada, 1);
+                        String email = (String) modelo.getValueAt(linhaSelecionada, 2);
+                        usuario = new Usuario(id, nome, email);
+                        txfNome.setText(nome);
+                        txfEmail.setText(email);
+                        modeForm();
+                    } catch (Exception ex){
+                        JOptionPane.showMessageDialog(null, "Erro ao carregar usuario" + ex.getMessage());
+                    }
 				} else { 
 					JOptionPane.showMessageDialog(null, "Selecione uma linha para editar!");
 				}
