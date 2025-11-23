@@ -22,6 +22,18 @@ import app.exception.UsuarioExeception;
 import app.model.Usuario;
 import app.model.UsuarioDao;
 
+
+/**
+ * Tela responsável pela visualização, listagem e edição de usuários da aplicação.
+ * 
+ * <p>
+ * A classe se comunica diretamente com {@link UsuarioDao} para carregar e 
+ * atualizar os dados, enquanto controlar estados da interface por meio dos
+ * métodos <code>modeList()</code> e <code>modeForm()</code>
+ * </p>
+ * 
+ * @author Luiz Martins
+ */
 public class UsuarioListView extends JFrame {
 
 	private UsuarioDao dao = new UsuarioDao();
@@ -43,10 +55,20 @@ public class UsuarioListView extends JFrame {
 	private JTable tabela;
 
 	private Usuario usuario;
+
+	/**
+	 * Contrói a janela gráfica de gerenciamente de usuários
+	 * 
+	 * <p>
+	 * O construtor inicializa os componetes da interface, cria a tabela e 
+	 * carrega os usuários de exemplo no DAO e registra os botões de ação.
+	 * </p>
+	 */
 	public UsuarioListView() {
 		
 		super("Teste do BorderLayout");
 		
+		// dados inciais para teste
 		try {
 			dao.adicionarUsuario("Juarez Silva", "juarezsilva@gmail.com");
 			dao.adicionarUsuario("Edson Arantes", "pelerei@gmail.com");
@@ -75,6 +97,8 @@ public class UsuarioListView extends JFrame {
 
 		painelBotoes = new JPanel();
 		getContentPane().add(painelBotoes, BorderLayout.SOUTH);
+
+		// ---- Botões e Listeners ----
 
 		btnNovo = new JButton(new AbstractAction("Novo") {
 			@Override
@@ -170,6 +194,8 @@ public class UsuarioListView extends JFrame {
 
 		// getContentPane().add(painelBotoesForm, BorderLayout.SOUTH);
 
+		// ---- Formulário ----
+
 		jpFormulario = new JPanel(new GridLayout(3, 2));
 		jpFormulario.add(new JLabel("Nome:"));
 		txfNome = new JTextField();
@@ -190,6 +216,10 @@ public class UsuarioListView extends JFrame {
 		setVisible(true);
 	}
 
+	/**
+	 * Alterna a interface para o modo de listagem, exibindo a tabela de usuário 
+	 * e ocultando o formulário de edição/criação
+	 */
 	private void modeList() {
 		btnCancelar.setVisible(false);
 		btnSalvar.setVisible(false);
@@ -201,6 +231,10 @@ public class UsuarioListView extends JFrame {
 		lTitulo.setText("Lista de Usuários Cadastrados");
 	}
 
+	/**
+	 * Alterna a interface para o modo de formulário, ocultando a tabela 
+	 * e permitindo a criação ou edição de um usuário
+	 */
 	private void modeForm() {
 		btnCancelar.setVisible(true);
 		btnSalvar.setVisible(true);
@@ -212,6 +246,11 @@ public class UsuarioListView extends JFrame {
 		lTitulo.setText("Formulário de Cadastrado de Usuários");
 	}
 
+
+	/**
+	 * Atualiza os dados exibidos na tabela, recarregando a lista de usuários 
+	 * Remove todas as linhas da tabela e insere os dados atualizados
+	 */
 	private void refreshTable() {
 		List<Usuario> usuarios = dao.listarUsuarios();
 		while (modelo.getRowCount() > 0) {

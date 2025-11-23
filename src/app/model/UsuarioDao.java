@@ -11,7 +11,9 @@ import app.exception.UsuarioExeception;
  * @author Luiz Martins
  * @version 1.0
  */
+
 public class UsuarioDao {
+	// Armazenamento de usuários
 	private List<Usuario> usuarios = new ArrayList<Usuario>();
 	private int proximoId = 1;
 
@@ -33,6 +35,7 @@ public class UsuarioDao {
 			throw new UsuarioExeception("Email inválido");
 		}
 
+		// adicionou-se mais um usuário banco de dados
 		usuarios.add(new Usuario(proximoId++, nome, email));
 	}
 
@@ -45,7 +48,15 @@ public class UsuarioDao {
 		return usuarios;
 	}
 
-	// Alterar
+	/**
+	 * Método para atualizar as informações de um usuário a partir de seu ID
+	 * 
+	 * @param id
+	 * @param novoNome
+	 * @param novoEmail
+	 * @return boolean (true se usuário for adicionado, false senão)
+	 * @throws UsuarioExeception
+	 */
 	public boolean atualizarUsuario(int id, String novoNome, String novoEmail) throws UsuarioExeception {
 		if(id <= 0) {
 			throw new UsuarioExeception("Id de usuário inválido");
@@ -66,11 +77,21 @@ public class UsuarioDao {
 		return false;
 	}
 
-	// Excluir
+	/**
+	 * Método para remover um usuário a partir de seu ID
+	 * 
+	 * @param id
+	 * @return boolean (true se usuário for removido, false senão)
+	 */
 	public boolean removerUsuario(int id) {
 		return usuarios.removeIf(u -> u.getId() == id);
 	}
 
+	/**
+	 * Método para buscar, pelo ID, um usuário no banco de dados
+	 * @param id
+	 * @return Usuario
+	 */
 	public Usuario buscarPorId(int id) {
 		for (Usuario u : usuarios) {
 			if (u.getId() == id)

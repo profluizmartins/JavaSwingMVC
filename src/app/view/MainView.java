@@ -10,10 +10,18 @@ import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 
+
+/**
+ * Classe domímio de MainView
+ * Exibe os dados na tela
+ * 
+ * @author Luiz Martins
+ */
 public class MainView  extends JFrame{
 	private JMenuBar menuBar;
 	private JMenu menuCadastros;
 	private JMenuItem menuUsuario;
+
 	public MainView(){
 		super("Sistema de Cadastros");
 		getContentPane().setLayout(new FlowLayout());
