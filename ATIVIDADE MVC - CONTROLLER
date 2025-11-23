@@ -1,0 +1,106 @@
+package app.controller;
+
+import java.util.List;
+
+import app.exception.UsuarioExeception;
+import app.model.Usuario;
+import app.model.UsuarioDao;
+import app.view.UsuarioView;
+
+    /**
+    * Controlador para gerenciar operações com usuários
+    * @author José Henrique
+    * @version 1.0
+    */
+
+
+public class UsuarioController {
+	private UsuarioDao dao;
+	private UsuarioView view;
+    
+    /**
+    * Construtor do controlador
+    * @param dao DAO de usuários
+    * @param view View de usuários
+    */
+    
+    
+	public UsuarioController(UsuarioDao dao, UsuarioView view) {
+		this.dao = dao;
+		this.view = view;
+	}
+    
+    /**
+    * Cria um novo usuário
+    * @param nome Nome do usuário
+    * @param email Email do usuário
+     */
+    
+	public void criarUsuario(String nome, String email) {
+		try {
+			dao.adicionarUsuario(nome, email);
+			view.mostrarMensagem("Usuário adicionado com sucesso.");
+		} catch (UsuarioException e) {
+			view.mostrarMensagem("Não foi possivel criar usuário: " + e.getMessage());
+		}
+		
+	}
+    
+    /**
+    * lista usuários
+    */
+     
+	public void listarUsuarios() {
+		List<Usuario> usuarios = dao.listarUsuarios();
+		view.listarUsuarios(usuarios);
+	}
+    
+    /**
+    * Atualiza um usuário 
+    * @param id ID do usuário
+    * @param novoNome Novo nome
+    * @param novoEmail Novo email
+    */
+    
+    
+	public void atualizarUsuario(int id, String novoNome, String novoEmail) {
+		try{
+		    boolean sucesso = dao.atualizarUsuario(id, novoNome, novoEmail);
+		    if (sucesso){
+		        view.mostrarMensagem("Usuário atualizado");
+		        
+		}else{
+		    view.mostrarMensagem("Usuário não encontrado.");
+		    
+		}
+
+	}catch(UsuarioException e){
+	    view.mostrarMensagem("Erro ao atualizar: "+e.getMessage());
+	    
+	}
+}
+
+    /**
+    * Remove um usuário
+    * @param id id do usuário 
+    */
+    
+	public void removerUsuario(int id) {
+		boolean sucesso = dao.removerUsuario(id);
+		if (sucesso) {
+			view.mostrarMensagem("Usuário removido com sucesso.");
+		} else {
+			view.mostrarMensagem("Usuário não encontrado.");
+		}
+	}
+    
+    /**
+    * Busca um usuário
+    * @param id id do usuário
+    */
+    
+	public void buscarUsuario(int id) {
+		Usuario u = dao.buscarPorId(id);
+		view.mostrarUsuario(u);
+	}
+}
