@@ -22,204 +22,254 @@ import app.exception.UsuarioExeception;
 import app.model.Usuario;
 import app.model.UsuarioDao;
 
+/**
+ * Tela responsável pela listagem, criação, edição e exclusão de usuários.
+ *
+ * <p>Possui dois modos: modo lista (exibe a tabela) e modo formulário
+ * (para criação ou edição de usuários).</p>
+ *
+ * @author GuilhermeHolanda
+ * @version 2.0
+ */
+
 public class UsuarioListView extends JFrame {
 
-	private UsuarioDao dao = new UsuarioDao();
-	private JLabel lTitulo;
+    private UsuarioDao dao = new UsuarioDao();
 
-	private JPanel jpFormulario;
-	private JTextField txfNome;
-	private JTextField txfEmail;
+    private JLabel lTitulo;
 
-	JPanel painelBotoes;
-	JButton btnNovo;
-	JButton btnEditar;
-	JButton btnExcluir;
-	JButton btnSalvar;
-	JButton btnCancelar;
-	JPanel painelCentral;
-	JScrollPane scrollTabela;
-	private DefaultTableModel modelo;
-	private JTable tabela;
+    private JPanel jpFormulario;
+    private JTextField txfNome;
+    private JTextField txfEmail;
 
-	private Usuario usuario;
-	public UsuarioListView() {
-		
-		super("Teste do BorderLayout");
-		
-		try {
-			dao.adicionarUsuario("Juarez Silva", "juarezsilva@gmail.com");
-			dao.adicionarUsuario("Edson Arantes", "pelerei@gmail.com");
-			dao.adicionarUsuario("João Souza", "joaosouza@gmail.com");
-			dao.adicionarUsuario("Luiza M", "luiza@gmail.com");
-		} catch (UsuarioExeception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-		
-		getContentPane().setLayout(new BorderLayout());
+    private JPanel painelBotoes;
+    private JButton btnNovo;
+    private JButton btnEditar;
+    private JButton btnExcluir;
+    private JButton btnSalvar;
+    private JButton btnCancelar;
 
-		painelCentral = new JPanel();
-		this.lTitulo = new JLabel("");
-		getContentPane().add(this.lTitulo, BorderLayout.NORTH);
-		getContentPane().add(painelCentral, BorderLayout.CENTER);
-		String[] colunas = { "ID", "Nome", "E-mail" };
+    private JPanel painelCentral;
+    private JScrollPane scrollTabela;
+    private DefaultTableModel modelo;
+    private JTable tabela;
 
-		modelo = new DefaultTableModel(colunas, 0);
-		tabela = new JTable(modelo);
+    private Usuario usuario;
 
-		scrollTabela = new JScrollPane(tabela);
-		painelCentral.add(scrollTabela);
-		this.refreshTable();
+    /**
+     * Construtor da tela de usuários.
+     *
+     * <p>Inicializa layout, tabela, botões e eventos da tela.</p>
+     */
+    public UsuarioListView() {
+        super("Lista de Usuários");
 
-		painelBotoes = new JPanel();
-		getContentPane().add(painelBotoes, BorderLayout.SOUTH);
+        // Dados iniciais de teste
+        try {
+            dao.adicionarUsuario("Juarez Silva", "juarezsilva@gmail.com");
+            dao.adicionarUsuario("Edson Arantes", "pelerei@gmail.com");
+            dao.adicionarUsuario("João Souza", "joaosouza@gmail.com");
+            dao.adicionarUsuario("Luiza M", "luiza@gmail.com");
+        } catch (UsuarioExeception e) {
+            e.printStackTrace();
+        }
 
-		btnNovo = new JButton(new AbstractAction("Novo") {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				modeForm();
-				usuario = null;
-				txfNome.setText("");
-				txfEmail.setText("");
+        getContentPane().setLayout(new BorderLayout());
 
-			}
-		});
+        painelCentral = new JPanel();
+        lTitulo = new JLabel("");
+        getContentPane().add(lTitulo, BorderLayout.NORTH);
+        getContentPane().add(painelCentral, BorderLayout.CENTER);
 
-		btnEditar = new JButton(new AbstractAction("Editar") {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				int linhaSelecionada = tabela.getSelectedRow();
-				if (linhaSelecionada != -1) {
-					int id = (int) modelo.getValueAt(linhaSelecionada, 0);
-					String nome = (String) modelo.getValueAt(linhaSelecionada, 1);
-					String email = (String) modelo.getValueAt(linhaSelecionada, 2);
-					usuario = new Usuario(id, nome, email);
-					txfNome.setText(nome);
-					txfEmail.setText(email);
-					modeForm();
-				} else { 
-					JOptionPane.showMessageDialog(null, "Selecione uma linha para editar!");
-				}
+        String[] colunas = {"ID", "Nome", "E-mail"};
+        modelo = new DefaultTableModel(colunas, 0);
+        tabela = new JTable(modelo);
+        scrollTabela = new JScrollPane(tabela);
+        painelCentral.add(scrollTabela);
+        refreshTable();
 
-				
-			}
-		});
+        painelBotoes = new JPanel();
+        getContentPane().add(painelBotoes, BorderLayout.SOUTH);
 
-		// Botão para remover linha selecionada
-		btnExcluir = new JButton(new AbstractAction("Excluir") {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				 int linhaSelecionada = tabela.getSelectedRow();
-				 if (linhaSelecionada != -1) {
-					 int id = (int) modelo.getValueAt(linhaSelecionada, 0);
-					dao.removerUsuario(id);
-					refreshTable();
-				 } else {
-				 JOptionPane.showMessageDialog(null, "Selecione uma linha para remover!");
-				}
-			}
-		});
-		// Layout
+        // ----------------------------
+        // Botão: Novo Usuário
+        // ----------------------------
+        btnNovo = new JButton(new AbstractAction("Novo") {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                modeForm();
+                usuario = null;
+                txfNome.setText("");
+                txfEmail.setText("");
+            }
+        });
 
-		btnSalvar = new JButton(new AbstractAction("Gravar") {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				
-				String nome = txfNome.getText();
-				String email = txfEmail.getText();
-				if(usuario == null) {
-					try {
-						dao.adicionarUsuario(nome, email);
-						refreshTable();
-						modeList();
-						JOptionPane.showMessageDialog(null, "Usuário criado com sucesso!");
-						
-					} catch (UsuarioExeception e1) {
-						JOptionPane.showMessageDialog(null, "Erro ao criar usuário: "+e1.getMessage());
-					}
-				}else {
-					try {
-						dao.atualizarUsuario(usuario.getId(), nome, email);
-						refreshTable();
-						modeList();
-						JOptionPane.showMessageDialog(null, "Usuário alterado com sucesso!");
-						
-					} catch (UsuarioExeception e1) {
-						JOptionPane.showMessageDialog(null, "Erro ao alterar usuário: "+e1.getMessage());
-					}
-					
-				}
+        // ----------------------------
+        // Botão: Editar Usuário
+        // ----------------------------
+        btnEditar = new JButton(new AbstractAction("Editar") {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                int linhaSelecionada = tabela.getSelectedRow();
 
-			}
-		});
+                if (linhaSelecionada != -1) {
+                    int id = (int) modelo.getValueAt(linhaSelecionada, 0);
+                    String nome = (String) modelo.getValueAt(linhaSelecionada, 1);
+                    String email = (String) modelo.getValueAt(linhaSelecionada, 2);
 
-		btnCancelar = new JButton(new AbstractAction("Cancelar") {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				modeList();
-			}
-		});
+                    try {
+                        usuario = new Usuario(id, nome, email);
+                    } catch (UsuarioExeception ex) {
+                        JOptionPane.showMessageDialog(null, "Erro ao carregar usuário: " + ex.getMessage());
+                        return;
+                    }
 
-		painelBotoes.add(btnNovo);
-		painelBotoes.add(btnEditar);
-		painelBotoes.add(btnExcluir);
-		painelBotoes.add(btnSalvar);
-		painelBotoes.add(btnCancelar);
+                    txfNome.setText(nome);
+                    txfEmail.setText(email);
+                    modeForm();
 
-		// getContentPane().add(painelBotoesForm, BorderLayout.SOUTH);
+                } else {
+                    JOptionPane.showMessageDialog(null, "Selecione uma linha para editar!");
+                }
+            }
+        });
 
-		jpFormulario = new JPanel(new GridLayout(3, 2));
-		jpFormulario.add(new JLabel("Nome:"));
-		txfNome = new JTextField();
-		txfNome.setColumns(20); // número de colunas (~20 caracteres)
-		jpFormulario.add(txfNome);
+        // ----------------------------
+        // Botão: Excluir Usuário
+        // ----------------------------
+        btnExcluir = new JButton(new AbstractAction("Excluir") {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                int linhaSelecionada = tabela.getSelectedRow();
 
-		jpFormulario.add(new JLabel("Email"));
-		txfEmail = new JTextField();
-		txfEmail.setColumns(20);
-		jpFormulario.add(txfEmail);
-		jpFormulario.setVisible(false);
-		painelCentral.add(jpFormulario);
+                if (linhaSelecionada != -1) {
+                    int id = (int) modelo.getValueAt(linhaSelecionada, 0);
+                    dao.removerUsuario(id);
+                    refreshTable();
+                } else {
+                    JOptionPane.showMessageDialog(null, "Selecione uma linha para remover!");
+                }
+            }
+        });
 
-		this.modeList();
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setSize(800, 600);
-		setLocationRelativeTo(null);
-		setVisible(true);
-	}
+        // ----------------------------
+        // Botão: Salvar Usuário
+        // ----------------------------
+        btnSalvar = new JButton(new AbstractAction("Gravar") {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String nome = txfNome.getText();
+                String email = txfEmail.getText();
 
-	private void modeList() {
-		btnCancelar.setVisible(false);
-		btnSalvar.setVisible(false);
-		btnNovo.setVisible(true);
-		btnEditar.setVisible(true);
-		btnExcluir.setVisible(true);
-		jpFormulario.setVisible(false);
-		scrollTabela.setVisible(true);
-		lTitulo.setText("Lista de Usuários Cadastrados");
-	}
+                if (usuario == null) { // Novo cadastro
+                    try {
+                        dao.adicionarUsuario(nome, email);
+                        refreshTable();
+                        modeList();
+                        JOptionPane.showMessageDialog(null, "Usuário criado com sucesso!");
+                    } catch (UsuarioExeception ex) {
+                        JOptionPane.showMessageDialog(null, "Erro ao criar usuário: " + ex.getMessage());
+                    }
 
-	private void modeForm() {
-		btnCancelar.setVisible(true);
-		btnSalvar.setVisible(true);
-		btnNovo.setVisible(false);
-		btnEditar.setVisible(false);
-		btnExcluir.setVisible(false);
-		jpFormulario.setVisible(true);
-		scrollTabela.setVisible(false);
-		lTitulo.setText("Formulário de Cadastrado de Usuários");
-	}
+                } else { // Atualização
+                    try {
+                        dao.atualizarUsuario(usuario.getId(), nome, email);
+                        refreshTable();
+                        modeList();
+                        JOptionPane.showMessageDialog(null, "Usuário alterado com sucesso!");
+                    } catch (UsuarioExeception ex) {
+                        JOptionPane.showMessageDialog(null, "Erro ao alterar usuário: " + ex.getMessage());
+                    }
+                }
+            }
+        });
 
-	private void refreshTable() {
-		List<Usuario> usuarios = dao.listarUsuarios();
-		while (modelo.getRowCount() > 0) {
-			modelo.removeRow(0);
-		}
+        // ----------------------------
+        // Botão: Cancelar operação
+        // ----------------------------
+        btnCancelar = new JButton(new AbstractAction("Cancelar") {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                modeList();
+            }
+        });
 
-		for (Usuario usuario : usuarios) {
-			modelo.addRow(new Object[] { usuario.getId(), usuario.getNome(), usuario.getEmail() });
-		}
-	}
+        painelBotoes.add(btnNovo);
+        painelBotoes.add(btnEditar);
+        painelBotoes.add(btnExcluir);
+        painelBotoes.add(btnSalvar);
+        painelBotoes.add(btnCancelar);
+
+        // ----------------------------
+        // Formulário
+        // ----------------------------
+        jpFormulario = new JPanel(new GridLayout(3, 2));
+
+        jpFormulario.add(new JLabel("Nome:"));
+        txfNome = new JTextField();
+        jpFormulario.add(txfNome);
+
+        jpFormulario.add(new JLabel("Email:"));
+        txfEmail = new JTextField();
+        jpFormulario.add(txfEmail);
+
+        jpFormulario.setVisible(false);
+        painelCentral.add(jpFormulario);
+
+        modeList();
+
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setSize(800, 600);
+        setLocationRelativeTo(null);
+        setVisible(true);
+    }
+
+    /**
+     * Alterna a tela para o modo de listagem (modo tabela).
+     */
+    private void modeList() {
+        btnCancelar.setVisible(false);
+        btnSalvar.setVisible(false);
+        btnNovo.setVisible(true);
+        btnEditar.setVisible(true);
+        btnExcluir.setVisible(true);
+
+        jpFormulario.setVisible(false);
+        scrollTabela.setVisible(true);
+        lTitulo.setText("Lista de Usuários Cadastrados");
+    }
+
+    /**
+     * Alterna a tela para o modo de formulário (modo cadastro/edição).
+     */
+    private void modeForm() {
+        btnCancelar.setVisible(true);
+        btnSalvar.setVisible(true);
+        btnNovo.setVisible(false);
+        btnEditar.setVisible(false);
+        btnExcluir.setVisible(false);
+
+        jpFormulario.setVisible(true);
+        scrollTabela.setVisible(false);
+        lTitulo.setText("Formulário de Cadastro de Usuários");
+    }
+
+    /**
+     * Atualiza a tabela com os dados existentes no {@link UsuarioDao}.
+     */
+    private void refreshTable() {
+        List<Usuario> usuarios = dao.listarUsuarios();
+
+        while (modelo.getRowCount() > 0) {
+            modelo.removeRow(0);
+        }
+
+        for (Usuario usuario : usuarios) {
+            modelo.addRow(new Object[]{
+                usuario.getId(),
+                usuario.getNome(),
+                usuario.getEmail()
+            });
+        }
+    }
 }
