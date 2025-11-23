@@ -2,7 +2,7 @@ package app.controller;
 
 import java.util.List;
 
-import app.exception.UsuarioExeception;
+import app.exception.UsuarioException;
 import app.model.Usuario;
 import app.model.UsuarioDao;
 import app.view.UsuarioView;
