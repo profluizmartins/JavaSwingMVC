@@ -1,0 +1,108 @@
+package app.model;
+import app.exception.UsuarioException;
+/**
+ * Classe de domínio de Usuario
+ * @author José Henrique
+ * @version 1.1
+ * 
+ */
+public class Usuario{
+    
+	private int id;
+    private String nome;
+    private String email;
+    /**
+    * Classe construtora
+    * @param id Identificador do Usuário
+    * @param nome Nome do Usuário
+    * @param email Email do Usuário
+    */
+	public Usuario(int id, String nome, String email) throws UsuarioException{
+		super();
+		if(id<=0){
+		    throw new UsuarioException("O ID deve ser maior que 0.");
+		    
+		}
+		if(nome.isBlank() || nome == null){
+		    throw new UsuarioException("O nome não pode ser vazio");
+		    
+		}
+		if(email == null || !email.contains("@")){
+		    throw new UsuarioException("Email inválido!");
+		    
+		}
+		
+		this.id = id;
+		this.nome = nome;
+		this.email = email;
+		
+	}
+	
+	public int getId() {
+		return id;
+	}
+	
+	
+	/**
+	 * "seta" um novo id
+	 * @param id Novo id a ser informado
+	 * @throws UsuarioException se o id for inválido
+	 */
+
+	public void setId(int id) throws UsuarioException{
+		
+		if(id<=0){
+		    throw new UsuarioException("O ID deve ser maior que 0.");
+		    
+		}
+		this.id = id;
+		
+	}
+	
+	public String getNome() {
+		return nome;
+	}
+	
+	
+	
+	
+	/**
+	 * "seta" um novo nome
+	 * @param nome Novo nome a ser informado
+	 * @throws UsuarioException se o nome for inválido
+	 */
+	
+	public void setNome(String nome) throws UsuarioException{
+		
+		if(nome.isBlank() || nome == null){
+		    throw new UsuarioException("O nome não pode ser vazio");
+		
+		}
+		this.nome = nome;
+	
+	}
+	
+	public String getEmail() {
+		return email;
+	}
+	
+	
+	
+	
+	/**
+	 * "seta" um novo email
+	 * @param email Novo email a ser informado
+	 * @throws UsuarioException se o email for inválido
+	 */
+
+	public void setEmail(String email) throws UsuarioException{
+		
+		if(email == null || !email.contains("@")){
+		    throw new UsuarioException("Email inválido!");
+		    
+		}
+		this.email = email;
+		
+	}
+    
+}
