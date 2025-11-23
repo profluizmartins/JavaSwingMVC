@@ -1,83 +1,72 @@
 package app;
-
-import java.util.Scanner;
-
-import app.controller.UsuarioController;
-import app.model.UsuarioDao;
-import app.view.MainView;
-import app.view.UsuarioView;
-
+import javax.swing.JOptionPane;
+import app.controller.ProdutoController;
+import app.model.ProdutoDao;
+import app.view.ProdutoView;
+/**
+ * Classe principal da aplicação.
+ * @author Enzo Fonseca
+ * @version 1.0
+ * Inicializa os componentes MVC e exibe o menu de opções.
+ */
 public class Main {
+    /**
+     * Ponto de entrada da aplicação.
+     * @param args Argumentos de linha de comando (não utilizados).
+     */
+    public static void main(String[] args) {
+        int opcao;
+        ProdutoDao dao = new ProdutoDao();
+        ProdutoView view = new ProdutoView();
+        ProdutoController controller = new ProdutoController(dao, view);
+        Object[] escolhas = new Object[]{"Sair", "Adicionar", "Listar", "Atualizar", "Remover", "Buscar por ID", "Buscar por Nome"};
 
-	// um pequeno comentário
-	public static void main(String[] args) {
-		
-		//UsuarioDao dao = new UsuarioDao();
-		
-		/*UsuarioView view = new UsuarioView();
-		UsuarioController controller = new UsuarioController(dao, view);
-
-		Scanner scanner = new Scanner(System.in);
-		int opcao = -1;
-
-		while (opcao != 0) {
-			System.out.println("\n==== MENU USUÁRIOS ====");
-			System.out.println("1. Adicionar usuário");
-			System.out.println("2. Listar usuários");
-			System.out.println("3. Atualizar usuário");
-			System.out.println("4. Remover usuário");
-			System.out.println("5. Buscar usuário por ID");
-			System.out.println("0. Sair");
-			System.out.print("Escolha: ");
-			opcao = scanner.nextInt();
-			scanner.nextLine(); // Limpar buffer
-
-			switch (opcao) {
-			case 1:
-				System.out.print("Nome: ");
-				String nome = scanner.nextLine();
-				System.out.print("Email: ");
-				String email = scanner.nextLine();
-				controller.criarUsuario(nome, email);
-				break;
-			case 2:
-				controller.listarUsuarios();
-				break;
-			case 3:
-				System.out.print("ID do usuário: ");
-				int idAtualizar = scanner.nextInt();
-				scanner.nextLine();
-				System.out.print("Novo nome: ");
-				String novoNome = scanner.nextLine();
-				System.out.print("Novo email: ");
-				String novoEmail = scanner.nextLine();
-				controller.atualizarUsuario(idAtualizar, novoNome, novoEmail);
-				break;
-			case 4:
-				System.out.print("ID do usuário: ");
-				int idRemover = scanner.nextInt();
-				controller.removerUsuario(idRemover);
-				break;
-			case 5:
-				System.out.print("ID do usuário: ");
-				int idBuscar = scanner.nextInt();
-				controller.buscarUsuario(idBuscar);
-				break;
-			case 0:
-				System.out.println("Encerrando...");
-				break;
-			default:
-				System.out.println("Opção inválida.");
-			}
-		}
-
-		scanner.close();
-		*/
-		MainView mv = new MainView();
-		/* mais um comentário
-		 * 
-		 */
-		
-	}
-
+        while ((opcao = JOptionPane.showOptionDialog(null, "Escolha uma opção", "Menu Produto", -1, 1, null, escolhas, escolhas[0])) != 0 && opcao != -1) {
+            try {
+                switch (opcao) {
+                    case 1: {
+                        String nome = JOptionPane.showInputDialog(null, "Nome do Produto:", "Adicionar Produto", 3);
+                        double preco = Double.parseDouble(JOptionPane.showInputDialog(null, "Preço do Produto:", "Adicionar Produto", 3));
+                        controller.criarProduto(nome, preco);
+                        break;
+                    }
+                    case 2: {
+                        controller.listarProdutos();
+                        break;
+                    }
+                    case 3: {
+                        int idAtualizar = Integer.parseInt(JOptionPane.showInputDialog(null, "ID do produto para atualizar:", "Atualizar Produto", 3));
+                        String novoNome = JOptionPane.showInputDialog(null, "Novo nome:", "Atualizar Produto", 3);
+                        double novoPreco = Double.parseDouble(JOptionPane.showInputDialog(null, "Novo preço:", "Atualizar Produto", 3));
+                        controller.atualizarProduto(idAtualizar, novoNome, novoPreco);
+                        break;
+                    }
+                    case 4: {
+                        int idRemover = Integer.parseInt(JOptionPane.showInputDialog(null, "ID do produto para remover:", "Remover Produto", 3));
+                        controller.removerProduto(idRemover);
+                        break;
+                    }
+                    case 5: {
+                        int idBuscar = Integer.parseInt(JOptionPane.showInputDialog(null, "ID do produto para buscar:", "Buscar Produto", 3));
+                        controller.buscarProduto(idBuscar);
+                        break;
+                    }
+                    case 6: {
+                        String nomeBusca = JOptionPane.showInputDialog(null, "Digite o nome (ou parte do nome) para buscar:", "Buscar Produto por Nome", 3);
+                        if (nomeBusca == null || nomeBusca.trim().isEmpty()) break;
+                        controller.buscarProdutosPorNome(nomeBusca);
+                        break;
+                    }
+                }
+            }
+            catch (NumberFormatException e) {
+                JOptionPane.showMessageDialog(null, "Entrada inválida. Por favor, insira um número válido para ID ou Preço.", "Erro de Formato", 0);
+            }
+            catch (NullPointerException e) {
+                // Captura quando o usuário clica em "Cancelar" ou fecha a janela
+                JOptionPane.showMessageDialog(null, "Operação cancelada.", "Aviso", 2);
+            }
+        }
+        System.out.println("Sistema encerrado.");
+    }
 }
