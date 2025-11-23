@@ -1,0 +1,30 @@
+/**
+ * Classe com exceções 
+ * @author José 
+ * @version 1.0
+ */
+ 
+ public class UsuarioException extends Exception{
+     
+    /**
+    * Construtor da mensagem
+    * @param mensagem Mensagem do erro 
+    */
+    
+    public UsuarioException(String mensagem){
+        super(mensagem);
+        
+    } 
+    
+    
+    /**
+    * Construtor com mensagem e a causa da exceção
+    * @param mensagem Mensagem do erro
+    * @param causa Exceção que causou o erro
+    */
+     
+    public UsuarioException(String mensagem, Throwable causa){
+        super(mensagem, causa);
+        
+    }
+}
