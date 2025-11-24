@@ -1,83 +1,144 @@
-package app;
+// Arquivo: Main.java
+package Aula08;
 
-import java.util.Scanner;
-
-import app.controller.UsuarioController;
-import app.model.UsuarioDao;
-import app.view.MainView;
-import app.view.UsuarioView;
-
+/**
+ * @author Marllus Coutinho
+ * @version 1.0
+ */
 public class Main {
 
-	// um pequeno comentário
-	public static void main(String[] args) {
-		
-		//UsuarioDao dao = new UsuarioDao();
-		
-		/*UsuarioView view = new UsuarioView();
-		UsuarioController controller = new UsuarioController(dao, view);
+    public static void main(String[] args) {
 
-		Scanner scanner = new Scanner(System.in);
-		int opcao = -1;
+        UsuarioDao usuarioDao = new UsuarioDao();
+        UsuarioView usuarioView = new UsuarioView();
+        UsuarioController usuarioController = new UsuarioController(usuarioDao, usuarioView);
 
-		while (opcao != 0) {
-			System.out.println("\n==== MENU USUÁRIOS ====");
-			System.out.println("1. Adicionar usuário");
-			System.out.println("2. Listar usuários");
-			System.out.println("3. Atualizar usuário");
-			System.out.println("4. Remover usuário");
-			System.out.println("5. Buscar usuário por ID");
-			System.out.println("0. Sair");
-			System.out.print("Escolha: ");
-			opcao = scanner.nextInt();
-			scanner.nextLine(); // Limpar buffer
+        ProdutoDao produtoDao = new ProdutoDao();
+        ProdutoView produtoView = new ProdutoView();
+        ProdutoController produtoController = new ProdutoController(produtoDao, produtoView);
+        // -----------------------------------------------------------------
 
-			switch (opcao) {
-			case 1:
-				System.out.print("Nome: ");
-				String nome = scanner.nextLine();
-				System.out.print("Email: ");
-				String email = scanner.nextLine();
-				controller.criarUsuario(nome, email);
-				break;
-			case 2:
-				controller.listarUsuarios();
-				break;
-			case 3:
-				System.out.print("ID do usuário: ");
-				int idAtualizar = scanner.nextInt();
-				scanner.nextLine();
-				System.out.print("Novo nome: ");
-				String novoNome = scanner.nextLine();
-				System.out.print("Novo email: ");
-				String novoEmail = scanner.nextLine();
-				controller.atualizarUsuario(idAtualizar, novoNome, novoEmail);
-				break;
-			case 4:
-				System.out.print("ID do usuário: ");
-				int idRemover = scanner.nextInt();
-				controller.removerUsuario(idRemover);
-				break;
-			case 5:
-				System.out.print("ID do usuário: ");
-				int idBuscar = scanner.nextInt();
-				controller.buscarUsuario(idBuscar);
-				break;
-			case 0:
-				System.out.println("Encerrando...");
-				break;
-			default:
-				System.out.println("Opção inválida.");
-			}
-		}
+        String[] opcoesPrincipais = {"Gerenciar Usuários", "Gerenciar Produtos", "Sair"};
 
-		scanner.close();
-		*/
-		MainView mv = new MainView();
-		/* mais um comentário
-		 * 
-		 */
-		
-	}
+        while (true) {
+            String opcaoPrincipal = ProdutoView.obterOpcao("Menu Principal", "Bem-vindo! O que deseja fazer?", opcoesPrincipais);
 
+            if (opcaoPrincipal == null || opcaoPrincipal.equals("Sair")) {
+                ProdutoView.info("Encerrando o sistema...");
+                break;
+            }
+
+            switch (opcaoPrincipal) {
+                case "Gerenciar Usuários":
+                    gerenciarUsuarios(usuarioController);
+                    break;
+                case "Gerenciar Produtos":
+                    gerenciarProdutos(produtoController);
+                    break;
+            }
+        }
+    }
+
+    /**Método para criar menu do módulo Usuários
+     *
+     * @param usuarioController Classe instanciada Controller do módulo usuários.
+     */
+    public static void gerenciarUsuarios(UsuarioController usuarioController) {
+        String[] opcoes = {"Adicionar", "Listar", "Atualizar", "Remover", "Buscar por ID", "Retornar"};
+
+        while (true) {
+            String opcao = UsuarioView.obterOpcao("Menu Usuário", "Escolha uma operação para usuários:", opcoes);
+
+            if (opcao == null || opcao.equals("Retornar")) {
+                break;
+            }
+
+            try {
+                switch (opcao) {
+                    case "Adicionar":
+                        String nome = UsuarioView.lerTexto("Nome do usuário:");
+                        String email = UsuarioView.lerTexto("Email do usuário:");
+                        usuarioController.criarUsuario(nome, email);
+                        break;
+                    case "Listar":
+                        usuarioController.listarUsuarios();
+                        break;
+                    case "Atualizar":
+                        int idAtualizar = UsuarioView.lerInt("ID do usuário para atualizar:");
+                        String novoNome = UsuarioView.lerTexto("Novo nome:");
+                        String novoEmail = UsuarioView.lerTexto("Novo email:");
+                        usuarioController.atualizarUsuario(idAtualizar, novoNome, novoEmail);
+                        break;
+                    case "Remover":
+                        int idRemover = UsuarioView.lerInt("ID do usuário para remover:");
+                        String[] botoesConfirmacao = {"Sim, remover", "Cancelar"};
+                        String confirmacao = UsuarioView.obterOpcao("Confirmação", "Tem certeza?", botoesConfirmacao);
+
+                        if ("Sim, remover".equals(confirmacao)) {
+                            usuarioController.removerUsuario(idRemover);
+                        }
+                        break;
+                    case "Buscar por ID":
+                        int idBuscar = UsuarioView.lerInt("ID do usuário para buscar:");
+                        usuarioController.buscarUsuario(idBuscar);
+                        break;
+                }
+            } catch (OperacaoCanceladaException e) {
+                UsuarioView.info("Operação cancelada.");
+            }
+        }
+    }
+
+    /**
+     * Método para criar menu do módulo Produtos
+     * @param produtoController classe Controller instanciada do módulo Produtos.
+     */
+    public static void gerenciarProdutos(ProdutoController produtoController) {
+        String[] opcoes = {"Adicionar", "Listar", "Atualizar", "Remover", "Buscar por ID", "Buscar por Nome", "Retornar"};
+
+        while (true) {
+            String opcao = ProdutoView.obterOpcao("Menu Produto", "Escolha uma operação para produtos:", opcoes);
+
+            if (opcao == null || opcao.equals("Retornar")) {
+                break;
+            }
+
+            try {
+                switch (opcao) {
+                    case "Adicionar":
+                        String nomeProd = ProdutoView.lerTexto("Nome do produto:");
+                        double precoProd = ProdutoView.lerDouble("Preço do produto:");
+                        produtoController.criarProduto(nomeProd, precoProd);
+                        break;
+                    case "Listar":
+                        produtoController.listarProdutos();
+                        break;
+                    case "Atualizar":
+                        int idUpdate = ProdutoView.lerInt("ID do produto para atualizar:");
+                        String newNome = ProdutoView.lerTexto("Novo nome:");
+                        double newPreco = ProdutoView.lerDouble("Novo preço:");
+                        produtoController.atualizarProduto(idUpdate, newNome, newPreco);
+                        break;
+                    case "Remover":
+                        int idRemove = ProdutoView.lerInt("ID do produto para remover:");
+                        String[] botoesConfirmacao = {"Sim, remover", "Cancelar"};
+                        String confirmacao = ProdutoView.obterOpcao("Confirmação", "Tem certeza?", botoesConfirmacao);
+                        if ("Sim, remover".equals(confirmacao)) {
+                            produtoController.removerProduto(idRemove);
+                        }
+                        break;
+                    case "Buscar por ID":
+                        int idBusca = ProdutoView.lerInt("ID do produto para buscar:");
+                        produtoController.buscarProdutoId(idBusca);
+                        break;
+                    case "Buscar por Nome":
+                        String nomeBusca = ProdutoView.lerTexto("Nome do produto para buscar:");
+                        produtoController.buscarProdutoNome(nomeBusca);
+                        break;
+                }
+            } catch (OperacaoCanceladaException e) {
+                ProdutoView.info("Operação cancelada.");
+            }
+        }
+    }
 }

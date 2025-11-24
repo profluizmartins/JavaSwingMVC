@@ -5,9 +5,9 @@ import java.awt.Dimension;
 import java.util.List;
 
 /**
- * Classe View de usuários
+ * Classe View de produtos
  */
-public class UsuarioView {
+public class ProdutoView {
 
     /**
      * Método para criar janelas de menus.
@@ -116,49 +116,39 @@ public class UsuarioView {
     }
 
     /**
-     * Método para exibir descrição de um usuário
-     * @param usuario usuário a ser exibido.
+     * Método para exibir descrição de um produto
+     * @param p produto a ser exibido.
      */
-    public void mostrarUsuario(Usuario usuario) {
-        if (usuario != null) {
-            String detalhes = String.format(
-                    "ID: %d\nNome: %s\nEmail: %s",
-                    usuario.getId(),
-                    usuario.getNome(),
-                    usuario.getEmail()
-            );
-            UsuarioView.info(detalhes);
+    public void mostrarProduto(Produto p) {
+        if (p != null) {
+            ProdutoView.info(p.toString());
         } else {
-            UsuarioView.erro("Usuário não encontrado.");
+            ProdutoView.erro("Produto não encontrado!");
         }
     }
 
     /**
-     * Método para exibir uma lista de usuários
-     * @param usuarios lista de usuários a ser exibida
+     * Método para exibir uma lista de produtos
+     * @param produtos lista de produtos a ser exibida
      */
-    public void listarUsuarios(List<Usuario> usuarios) {
-        if (usuarios.isEmpty()) {
-            UsuarioView.info("Nenhum usuário cadastrado.");
+    public void listarProdutos(List<Produto> produtos) {
+        if (produtos.isEmpty()) {
+            ProdutoView.info("Nenhum produto cadastrado!");
         } else {
             StringBuilder listaFormatada = new StringBuilder();
-            listaFormatada.append("--- Lista de Usuários ---\n\n");
+            listaFormatada.append("--- Lista de Produtos ---\n\n");
 
-            for (Usuario u : usuarios) {
-                listaFormatada.append("ID: ").append(u.getId())
-                        .append(" | Nome: ").append(u.getNome())
-                        .append(" | Email: ").append(u.getEmail())
-                        .append("\n");
+            for (Produto p : produtos) {
+                listaFormatada.append(p.toString()).append("\n");
             }
 
             JTextArea textArea = new JTextArea(listaFormatada.toString());
             textArea.setEditable(false);
 
             JScrollPane scrollPane = new JScrollPane(textArea);
+            scrollPane.setPreferredSize(new Dimension(450, 300)); // Ajuste o tamanho se necessário
 
-            scrollPane.setPreferredSize(new Dimension(450, 300));
-
-            JOptionPane.showMessageDialog(null, scrollPane, "Lista de Usuários", JOptionPane.PLAIN_MESSAGE);
+            JOptionPane.showMessageDialog(null, scrollPane, "Lista de Produtos", JOptionPane.PLAIN_MESSAGE);
         }
     }
 
@@ -166,7 +156,7 @@ public class UsuarioView {
      * Método para exibir mensagem
      * @param mensagem mensagem a ser exibida
      */
-    public void mostrarMensagem(String mensagem) {
-        UsuarioView.info(mensagem);
+    public void mostrarMsg(String mensagem) {
+        ProdutoView.info(mensagem);
     }
 }
